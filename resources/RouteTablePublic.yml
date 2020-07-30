@@ -1,7 +1,7 @@
-Type: AWS::EC2::Route
+Type: AWS::EC2::RouteTable
 Properties:
-  DestinationCidrBlock: 0.0.0.0/0
-  GatewayId:
-    Ref: ${self:service}-InternetGateway
-  RouteTableId:
-    Ref: ${self:service}-RouteTable-Public
+  VpcId:
+    Ref: ServerlessVPC
+  Tags:
+    - Key: Name
+      Value: ${self:service}-Public-Route

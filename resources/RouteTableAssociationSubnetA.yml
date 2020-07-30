@@ -1,6 +1,6 @@
 Type: AWS::EC2::SubnetRouteTableAssociation
 Properties:
   RouteTableId:
-    Ref:  ${self:service}-RouteTable-Public
+    Ref:  RouteTablePublic
   SubnetId:
-    Ref: ${self:service}-Subnet-A
+    Ref: ServerlessSubnetA
