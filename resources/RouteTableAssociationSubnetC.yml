@@ -1,0 +1,6 @@
+Type: AWS::EC2::SubnetRouteTableAssociation
+Properties:
+  RouteTableId:
+    Ref:  ${self:service}-RouteTable-Public
+  SubnetId:
+    Ref: ${self:service}-Subnet-C
