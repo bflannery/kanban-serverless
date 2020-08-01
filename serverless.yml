@@ -42,22 +42,24 @@ resources:
     ServerlessVPCGA: ${file(./resources/ServerlessVPCGA.yml)}
 
 functions:
-  list-tasks:
-    handler: endpoints.tasks.list.handler
-    events:
-      - http:
-            path: tasks
-            method: get
-            cors: true
   create-task:
-    handler: endpoints.tasks.create.handler
+    handler: endpoints/tasks/create.handler
     events:
       - http:
           path: tasks
           method: post
           cors: true
+
+  list-tasks:
+    handler: endpoints/tasks/list.handler
+    events:
+      - http:
+            path: tasks
+            method: get
+            cors: true
+
   delete-task:
-    handler: endpoints.tasks.delete.handler
+    handler: endpoints/tasks/delete.handler
     events:
       - http:
           path: tasks/{id}
