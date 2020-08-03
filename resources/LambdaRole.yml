@@ -18,3 +18,11 @@ Properties:
               - logs:CreateLogGroup
               - logs:PutLogEvents
             Resource: arn:aws:logs:*:*:*
+    - PolicyName: 'ParameterStoreBlogDevParameterAccess'
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - 'ssm:GetParameter*'
+            Resource: arn:aws:ssm:*:*:*

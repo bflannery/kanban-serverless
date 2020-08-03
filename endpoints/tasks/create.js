@@ -1,13 +1,26 @@
 'use strict';
 const pg = require('pg')
-
+const { config } = require('../../aws/rds')
 
 module.exports.handler = async event => {
-    const { name, description } = event.body
+
+    console.log({ event })
+
+    const { task_uuid, name, description } = JSON.parse(event.body)
+
+    const dbConfig = await config()
+
+    console.log({ dbConfig })
 
     const client = new pg.Client(dbConfig);
 
-    const query = "INSERT into tasks (name, description) VALUES ('new task', 'new task description');"
+    const queryValues = `'${task_uuid}', '${name}', '${description}'`
+
+    console.log({ queryValues})
+
+    const query = `INSERT into tasks (task_uuid, name, description) VALUES (${queryValues});`
+
+    console.log({ query })
 
     let result;
 
